@@ -15,7 +15,7 @@
     }
 
     #zoo_linkBanner {
-        background-color: rgb(29, 65, 29);
+        background-color: rgb(14, 77, 146);
         padding: 10px;
         text-align: center;
         vertical-align: center;
@@ -37,7 +37,7 @@
     }
 </style>
 
-<a href = "https://zoo.hackclub.com"><div id="zoo_linkBanner">
-    <h1>CHECK OUT MORE AT THE ZOO <span class="material-symbols-outlined bannerIcon">pets</span> </h1>
+<a href = "https://shark-zone.fun"><div id="zoo_linkBanner">
+    <h1>EXPLORE THE AMAZING WORLD OF SHARKS <span class="material-symbols-outlined bannerIcon">water</span> </h1>
 </div></a>
 <div style="height: 100px"></div>
