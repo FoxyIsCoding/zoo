@@ -16,7 +16,7 @@
 	<button class="faq-question" onclick={toggle}>
 		<h3>{question}</h3>
 		<span class="icon material-symbols-outlined">
-			{isOpen ? 'expand_less' : 'expand_more'}
+			{isOpen ? '▲' : '▼'}
 		</span>
 	</button>
 	{#if isOpen}

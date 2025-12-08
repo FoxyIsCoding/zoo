@@ -10,7 +10,7 @@
 
 <AlternatingSection 
 	title="GREAT WHITE SHARKS" 
-	imageSrc="https://images.unsplash.com/photo-1560275619-4662e36fa65c?w=400"
+	imageSrc="https://www.australiangeographic.com.au/wp-content/uploads/2022/07/shutterstock_383911432-scaled.jpg?w=400"
 	imageAlt="Great White Shark"
 	bg="#f8f9fa"
 >
@@ -24,7 +24,7 @@
 
 <AlternatingSection 
 	title="WHALE SHARKS" 
-	imageSrc="https://images.unsplash.com/photo-1540479859555-17af45c78602?w=400"
+	imageSrc="https://www.joali.com/media/qvmcod4g/joali-being-whalesharks-of-the-maldives.png?format=webp&v=1715862213?w=400"
 	imageAlt="Whale Shark"
 	reverse={true}
 	bg="#ffffff"

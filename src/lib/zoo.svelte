@@ -33,11 +33,10 @@
     }
     #zoo_linkBanner:hover {
         cursor: pointer;
-        box-shadow: 0px 0px 50px 10px rgba(0, 0, 0, 0.551);
+        box-shadow: 0px 0px 50px 10px rgba(0, 25, 72, 0.551);
     }
 </style>
 
 <a href = "https://zoo.hackclub.com"><div id="zoo_linkBanner">
     <h1>CHECK OUT MORE AT THE ZOO <span class="material-symbols-outlined bannerIcon">pets</span> </h1>
 </div></a>
-<div style="height: 100px"></div>
