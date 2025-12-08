@@ -16,7 +16,7 @@
 	<div class="container">
 		{#if imageSrc}
 			<div class="image-column">
-				<img src={imageSrc} alt={imageAlt} />
+				<img src={imageSrc} alt={imageAlt} style="border-radius: 1dvi;"/>
 			</div>
 		{/if}
 		<div class="content-column">

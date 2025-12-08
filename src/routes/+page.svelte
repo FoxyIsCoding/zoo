@@ -1,12 +1,12 @@
 <script lang="ts">
 	import HeroSection from '$lib/HeroSection.svelte';
 	import AlternatingSection from '$lib/AlternatingSection.svelte';
-	import MyntsSection from '$lib/MyntsSection.svelte';
+	import MyntsSection from '$lib/SpeedSection.svelte';
 	import FAQItem from '$lib/FAQItem.svelte';
 	import Footer from '$lib/Footer.svelte';
 </script>
 
-<HeroSection title="SHARK ZONE" subtitle="The Ocean's Most Fin-tastic Creatures" />
+<HeroSection title="shorks :3" subtitle="that silly cute things that swin in oceans" />
 
 <AlternatingSection 
 	title="GREAT WHITE SHARKS" 
@@ -15,8 +15,8 @@
 	bg="#f8f9fa"
 >
 	<p>The ocean's most iconic predator! Great whites can grow up to 20 feet long and swim at speeds of 35 mph.</p>
-	<p>🏊 Top speed: 35 mph | 🌊 Depth: 4,000 feet | ⚡ Lifespan: 70 years</p>
-	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+	<p>They live on avarage for over 70 years :o</p>
+	<p>These sharks can alsoo swim in the insane deep of up to 4,000 feet! </p>
 	<a href="#facts" class="cta-button">Learn More</a>
 </AlternatingSection>
 
@@ -31,9 +31,8 @@
 >
 	<p>The gentle giants of the ocean! Whale sharks are the largest fish species, growing up to 40 feet long.</p>
 	<p>Despite their massive size, they feed only on plankton and small fish. Each whale shark has a unique spot pattern - like a fingerprint!</p>
-	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-	<p style="font-style: italic; opacity: 0.8;">🐋 They can live over 100 years!</p>
-	<a href="#conservation" class="cta-button secondary">Support Sharks</a>
+	<p style="font-style: italic; opacity: 0.8;">They can live over 100 years!</p>
+	<a href="https://saveourseas.com/" class="cta-button secondary">Save shorks :3</a>
 </AlternatingSection>
 
 <AlternatingSection 
@@ -43,21 +42,19 @@
 	bg="#f0f7ff"
 >
 	<p><strong>360-degree vision with their hammer-shaped heads!</strong></p>
-	<p>These unique sharks use their wide heads to pin stingrays to the ocean floor. They're one of the few shark species that swim in schools!</p>
-	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation.</p>
+	<p>These unique sharks use their wide heads to pin stingrays to the ocean floor. They're one of the few shark species that swim in schools :3</p>
 	<a href="#learn" class="cta-button">Discover More</a>
 </AlternatingSection>
 
 <AlternatingSection 
 	title="TIGER SHARKS" 
-	imageSrc="https://images.unsplash.com/photo-1607991226553-b44f03f7ab5c?w=400"
+	imageSrc="https://upload.wikimedia.org/wikipedia/commons/3/39/Tiger_shark.jpg"
 	imageAlt="Tiger Shark"
 	reverse={true}
 	bg="#fff5f5"
 >
 	<p>The "garbage cans of the sea"!</p>
 	<p>Tiger sharks will eat almost anything - they've been found with license plates and tires in their stomachs! Named for the dark stripes on their bodies, they can grow up to 16 feet long.</p>
-	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit esse.</p>
 	<a href="#species" class="cta-button secondary">More Species</a>
 </AlternatingSection>
 

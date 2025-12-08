@@ -9,8 +9,8 @@
 <section class="mynts-section">
 	<div class="container">
 		<div class="mynts-icon">🏊</div>
-		<h2>Shark Speed</h2>
-		<p class="description">Sharks are some of the fastest swimmers in the ocean! Different species have different top speeds.</p>
+		<h2>Shark Speed :o</h2>
+		<p class="description">Sharks are some of the fastest swimmers in the ocean!</p>
 		<div class="conversion">
 			<span class="rate">Great White: {speed} MPH</span>
 		</div>

@@ -2,12 +2,12 @@
 	<div class="footer-content">
 		<div class="footer-brand">
 			<span class="footer-icon">🦈</span>
-			<p class="footer-text">Shark Zone - Celebrating ocean's apex predators</p>
+			<p class="footer-text">shorks :3</p>
 		</div>
 		<div class="footer-links">
-			<a href="https://saveourseas.com" target="_blank" rel="noopener noreferrer">Shark Conservation</a>
-			<a href="#facts">Shark Facts</a>
-			<a href="#species">Species Guide</a>
+			<a href="https://saveourseas.com" target="_blank" rel="noopener noreferrer">save poor sharks :c</a>
+			<a href="#facts">some facts</a>
+			<a href="#species">species guide</a>
 		</div>
 	</div>
 </footer>
