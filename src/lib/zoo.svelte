@@ -1,7 +1,7 @@
 <style>
     .bannerIcon {
-        vertical-align: -0.07em;
-        font-size: 24px !important;
+        vertical-align: -0.2em;
+        font-size: 25px !important;
     }
     @font-face {
         font-family: 'Phantom Sans';
@@ -25,7 +25,7 @@
         top: 0;
         height: 65px;
         z-index: 1000;
-        font-size: 15px;
+        font-size: 20px;
         transition: box-shadow 0.3s ease-in-out;
         font-family: Phantom Sans, sans-serif;
         text-decoration: none;

@@ -4,6 +4,7 @@
 	import MyntsSection from '$lib/SpeedSection.svelte';
 	import FAQItem from '$lib/FAQItem.svelte';
 	import Footer from '$lib/Footer.svelte';
+	import FactsPanel from '$lib/FactsPanel.svelte';	
 </script>
 
 <HeroSection title="shorks :3" subtitle="that silly cute things that swin in oceans" />
@@ -22,7 +23,7 @@
 
 <MyntsSection />
 
-<AlternatingSection 
+<AlternatingSection
 	title="WHALE SHARKS" 
 	imageSrc="https://www.joali.com/media/qvmcod4g/joali-being-whalesharks-of-the-maldives.png?format=webp&v=1715862213?w=400"
 	imageAlt="Whale Shark"
@@ -45,7 +46,7 @@
 	<p>These unique sharks use their wide heads to pin stingrays to the ocean floor. They're one of the few shark species that swim in schools :3</p>
 	<a href="#learn" class="cta-button">Discover More</a>
 </AlternatingSection>
-
+<FactsPanel />
 <AlternatingSection 
 	title="TIGER SHARKS" 
 	imageSrc="https://upload.wikimedia.org/wikipedia/commons/3/39/Tiger_shark.jpg"

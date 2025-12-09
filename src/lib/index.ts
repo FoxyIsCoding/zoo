@@ -7,5 +7,8 @@ export { default as Footer } from './Footer.svelte';
 export { default as ColorSection } from './ColorSection.svelte';
 export { default as SharkFact } from './SharkFact.svelte';
 export { default as SharkJoke } from './SharkJoke.svelte';
-export { default as SharkCounter } from './SharkCounter.svelte';
+export { default as FactPanel } from './FactsPanel.svelte';
+
+
+
 
