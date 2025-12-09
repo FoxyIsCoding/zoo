@@ -1,7 +1,9 @@
 <script lang="ts">
 	import { onMount, onDestroy } from 'svelte';
 
-	const facts = [
+	type Fact = { title: string; text: string };
+
+	const defaultFacts: Fact[] = [
 		{
 			title: 'Ancient Survivors',
 			text: 'Sharks have existed for over 400 million years more than trees and dinosaurs :3'
@@ -12,11 +14,11 @@
 		},
 		{
 			title: 'Super Sensors',
-			text: 'Ampullae of Lorenzini let sharks detect tiny electric signals from other animals.'
+			text: 'Did ya know that "Ampullae of Lorenzini" let sharks detect tiny electric signals from other animals.'
 		},
 		{
 			title: 'Speed Demons',
-			text: 'The shortfin mako can burst to roughly 60 mph, making it the fastest shark.'
+			text: 'The shortfin mako can burst to roughly 60 mph, making it the fastest shark. :3'
 		},
 		{
 			title: 'Ocean Navigators',
@@ -24,23 +26,33 @@
 		}
 	];
 
-	const intervalMs = 4200;
-	let active = 0;
+	const { facts: incomingFacts = defaultFacts, intervalMs = 4200 } = $props<{
+		facts?: Fact[];
+		intervalMs?: number;
+	}>();
+
+	const facts = $derived(incomingFacts);
+	let active = $state(0);
+	let progress = $state(0);
+	let isVisible = $state(true);
+	let visited = $state<boolean[]>([]);
+
+	const resetVisited = () => {
+		visited = facts.map((_: Fact, i: number) => i === 0);
+	};
+
+	const visitedCount = $derived(visited.filter(Boolean).length);
+	const completed = $derived(visitedCount >= facts.length);
+	const currentFact = $derived(facts[active]);
+
 	let raf: number | null = null;
 	let startAt = 0;
-	let progress = 0;
-	let visited: boolean[] = Array(facts.length).fill(false);
-	let visitedCount = 0;
-	let completed = false;
+	let sectionEl: HTMLElement | null = null;
 
 	const markVisited = (index: number) => {
 		if (!visited[index]) {
-			visited = visited.map((v, i) => (i === index ? true : v));
-			visitedCount += 1;
-			if (visitedCount >= facts.length) {
-				completed = true;
-				stopCycle();
-			}
+			visited[index] = true;
+			visited = [...visited];
 		}
 	};
 
@@ -55,8 +67,8 @@
 	};
 
 	const step = (now: number) => {
-		if (completed) {
-			progress = 1;
+		if (completed || !isVisible) {
+			progress = completed ? 1 : progress;
 			stopCycle();
 			return;
 		}
@@ -72,8 +84,7 @@
 
 	const startCycle = () => {
 		stopCycle();
-		if (completed) {
-			progress = 1;
+		if (completed || !isVisible) {
 			return;
 		}
 		progress = 0;
@@ -86,18 +97,47 @@
 		raf = null;
 	};
 
+	const pauseCycle = () => {
+		stopCycle();
+	};
+
+	const resumeCycle = () => {
+		if (!completed && isVisible) {
+			startAt = performance.now() - progress * intervalMs;
+			raf = requestAnimationFrame(step);
+		}
+	};
+
 	const replay = () => {
-		visited = Array(facts.length).fill(false);
-		visitedCount = 0;
-		completed = false;
-		setActive(0);
+		resetVisited();
+		active = 0;
+		progress = 0;
+		markVisited(0);
 		startCycle();
 	};
 
-	markVisited(active);
+	resetVisited();
 
 	onMount(() => {
+		const observer = new IntersectionObserver(
+			([entry]) => {
+				isVisible = entry.isIntersecting;
+				if (isVisible) {
+					resumeCycle();
+				} else {
+					pauseCycle();
+				}
+			},
+			{ threshold: 0.1 }
+		);
+
+		if (sectionEl) observer.observe(sectionEl);
+
 		startCycle();
+
+		return () => {
+			observer.disconnect();
+		};
 	});
 
 	onDestroy(() => {
@@ -112,8 +152,8 @@
 		<p class="body">{facts[active].text}</p>
 		{#if completed}
 			<div class="cta-row">
-				<a class="btn" href="https://example.com">pet shorks :3</a>
-				<button class="btn ghost" type="button" on:click={replay}>replay facts</button>
+				<a class="btn" href="/pet">pet shorks :3</a>
+				<button class="btn ghost" type="button" onclick={replay}>replay facts</button>
 			</div>
 		{:else}
 			<div class="indicators" aria-label="Shark facts selector">
@@ -122,7 +162,7 @@
 						type="button"
 						class={`dot ${i === active ? 'active' : ''}`}
 						style={`--p:${i === active ? progress : 0};`}
-						on:click={() => goTo(i)}
+						onclick={() => goTo(i)}
 						aria-pressed={i === active}
 						aria-label={`Show fact ${i + 1}`}
 					></button>
