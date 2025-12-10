@@ -5,13 +5,16 @@
 	import SharkDisplay from '$lib/pet/SharkDisplay.svelte';
 	import PetControls from '$lib/pet/PetControls.svelte';
 	import DeadScreen from '$lib/pet/DeadScreen.svelte';
+	import defaultImg from '$lib/../assets/interactive/low quality/1.png?url';
+	import sadImg from '$lib/../assets/interactive/low quality/sad.png?url';
+	import eatingImg from '$lib/../assets/interactive/low quality/vege.png?url';
 
 	let { data }: PageProps = $props();
 
 	const images = {
-		default: '/src/assets/interactive/low quality/1.png',
-		sad: '/src/assets/interactive/low quality/sad.png',
-		eating: '/src/assets/interactive/low quality/vege.png'
+		default: defaultImg,
+		sad: sadImg,
+		eating: eatingImg
 	};
 
 	let health = $state(100);
