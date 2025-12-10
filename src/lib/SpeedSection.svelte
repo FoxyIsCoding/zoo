@@ -12,7 +12,6 @@
 
 	const toggleUnit = () => {
 		useKmh = !useKmh;
-		// Save to cookie
 		document.cookie = `speedUnit=${useKmh ? 'kmh' : 'mph'}; path=/; max-age=31536000`;
 	};
 
@@ -20,7 +19,6 @@
 	const unit = $derived(useKmh ? 'KMH' : 'MPH');
 
 	onMount(() => {
-		// Load from cookie
 		const cookies = document.cookie.split(';').reduce((acc, cookie) => {
 			const [key, value] = cookie.trim().split('=');
 			acc[key] = value;
