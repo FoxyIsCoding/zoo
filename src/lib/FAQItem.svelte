@@ -29,12 +29,12 @@
 <style>
 	.faq-item {
 		border-bottom: 2px solid #e0e0e0;
-		margin-bottom: 10px;
+		margin-bottom: clamp(8px, 2vw, 10px);
 	}
 
 	.faq-question {
 		width: 100%;
-		padding: 25px 20px;
+		padding: clamp(16px, 3vw, 25px) clamp(16px, 3vw, 20px);
 		background: none;
 		border: none;
 		text-align: left;
@@ -50,22 +50,32 @@
 	}
 
 	h3 {
-		font-size: 1.4rem;
+		font-size: clamp(1rem, 2.5vw, 1.4rem);
 		font-weight: 700;
 		margin: 0;
 		color: #1f2d3d;
 		flex: 1;
+		line-height: 1.3;
 	}
 
 	.icon {
-		font-size: 32px;
+		font-size: clamp(24px, 5vw, 32px);
 		color: #ec3750;
 		transition: transform 0.3s;
+		flex-shrink: 0;
+		margin-left: clamp(8px, 2vw, 12px);
 	}
 
 	.faq-answer {
-		padding: 0 20px 30px 20px;
+		padding: 0 clamp(16px, 3vw, 20px) clamp(20px, 4vw, 30px) clamp(16px, 3vw, 20px);
 		animation: slideDown 0.3s ease-out;
+	}
+
+	.faq-answer p {
+		font-size: clamp(0.95rem, 2vw, 1.1rem);
+		line-height: 1.6;
+		color: #555;
+		margin: 0;
 	}
 
 	@keyframes slideDown {
@@ -79,10 +89,17 @@
 		}
 	}
 
-	p {
-		font-size: 1.2rem;
-		line-height: 1.7;
-		color: #555;
-		margin: 0;
+	@media (max-width: 640px) {
+		.faq-question {
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 12px;
+		}
+
+		.icon {
+			align-self: flex-end;
+			margin-left: auto;
+			margin-right: 0;
+		}
 	}
 </style>

@@ -16,7 +16,7 @@
 	.zoo-footer {
 		background: #1f2d3d;
 		color: white;
-		padding: 40px 20px;
+		padding: clamp(30px, 6vw, 40px) clamp(16px, 4vw, 20px);
 		text-align: center;
 	}
 
@@ -26,7 +26,7 @@
 	}
 
 	.footer-brand {
-		margin-bottom: 25px;
+		margin-bottom: clamp(15px, 4vw, 25px);
 	}
 
 	.footer-icon {
@@ -43,10 +43,10 @@
 
 	.footer-links {
 		display: flex;
-		gap: 30px;
+		gap: clamp(15px, 4vw, 30px);
 		justify-content: center;
 		flex-wrap: wrap;
-		margin-top: 20px;
+		margin-top: clamp(15px, 3vw, 20px);
 	}
 
 	.footer-links a {
@@ -60,5 +60,23 @@
 	.footer-links a:hover {
 		opacity: 1;
 		text-decoration: underline;
+	}
+
+	@media (max-width: 640px) {
+		.footer-links {
+			gap: clamp(12px, 3vw, 20px);
+		}
+
+		.footer-links a {
+			font-size: clamp(0.85rem, 2vw, 1rem);
+		}
+
+		.footer-icon {
+			font-size: clamp(36px, 8vw, 48px);
+		}
+
+		.footer-text {
+			font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+		}
 	}
 </style>

@@ -31,7 +31,7 @@
 
 <style>
 	.alternating {
-		padding: 80px 20px;
+		padding: clamp(40px, 6vw, 80px) clamp(16px, 4vw, 20px);
 	}
 
 	.container {
@@ -39,7 +39,7 @@
 		margin: 0 auto;
 		display: grid;
 		grid-template-columns: 1fr 1fr;
-		gap: 60px;
+		gap: clamp(30px, 6vw, 60px);
 		align-items: center;
 	}
 
@@ -71,15 +71,27 @@
 	}
 
 	p {
-		font-size: 1.3rem;
+		font-size: clamp(1rem, 2vw, 1.3rem);
 		line-height: 1.6;
 		margin: 15px 0;
 	}
 
 	@media (max-width: 768px) {
+		.alternating {
+			padding: clamp(32px, 4vw, 60px) clamp(12px, 3vw, 20px);
+		}
+
 		.container {
 			grid-template-columns: 1fr;
-			gap: 30px;
+			gap: clamp(20px, 5vw, 40px);
+		}
+
+		h2 {
+			font-size: clamp(1.5rem, 5vw, 2.5rem);
+		}
+
+		p {
+			font-size: clamp(0.95rem, 2.5vw, 1.1rem);
 		}
 
 		.reverse .container {
@@ -88,6 +100,12 @@
 
 		.content-column {
 			text-align: center;
+		}
+	}
+
+	@media (max-width: 640px) {
+		.image-column img {
+			max-width: 100%;
 		}
 	}
 </style>

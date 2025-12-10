@@ -40,7 +40,7 @@
 	title="HAMMERHEAD SHARKS" 
 	imageSrc="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400"
 	imageAlt="Hammerhead Shark"
-	bg="#f0f7ff"
+	bg="#f0f7ff" 
 >
 	<p><strong>360-degree vision with their hammer-shaped heads!</strong></p>
 	<p>These unique sharks use their wide heads to pin stingrays to the ocean floor. They're one of the few shark species that swim in schools :3</p>
@@ -116,12 +116,12 @@
 		display: inline-block;
 		background: #ec3750;
 		color: white;
-		padding: 15px 35px;
+		padding: clamp(12px, 2vw, 15px) clamp(24px, 5vw, 35px);
 		border-radius: 50px;
 		text-decoration: none;
 		font-weight: 700;
-		font-size: 1.2rem;
-		margin-top: 20px;
+		font-size: clamp(0.95rem, 2vw, 1.2rem);
+		margin-top: clamp(15px, 3vw, 20px);
 		transition: transform 0.2s, box-shadow 0.2s;
 		box-shadow: 0 4px 12px rgba(236, 55, 80, 0.3);
 	}
@@ -142,7 +142,7 @@
 
 	.faq-section {
 		background: #f8f9fa;
-		padding: 80px 20px;
+		padding: clamp(50px, 8vw, 80px) clamp(16px, 4vw, 20px);
 	}
 
 	.faq-container {
@@ -152,12 +152,12 @@
 
 	.faq-header {
 		text-align: center;
-		margin-bottom: 50px;
+		margin-bottom: clamp(30px, 6vw, 50px);
 	}
 
 	.faq-emoji {
-		font-size: 8rem;
-		margin-bottom: 20px;
+		font-size: clamp(4rem, 12vw, 8rem);
+		margin-bottom: clamp(15px, 3vw, 20px);
 	}
 
 	.faq-header h2 {
@@ -168,7 +168,7 @@
 	}
 
 	.faq-subtitle {
-		font-size: 1.3rem;
+		font-size: clamp(1rem, 2.5vw, 1.3rem);
 		color: #555;
 		margin: 0;
 	}
@@ -176,7 +176,28 @@
 	.faq-list {
 		background: white;
 		border-radius: 15px;
-		padding: 20px;
+		padding: clamp(16px, 4vw, 20px);
 		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+	}
+
+	@media (max-width: 768px) {
+		.faq-section {
+			padding: clamp(40px, 6vw, 60px) clamp(12px, 3vw, 20px);
+		}
+
+		.faq-list {
+			padding: clamp(14px, 3vw, 18px);
+		}
+	}
+
+	@media (max-width: 640px) {
+		.cta-button {
+			display: block;
+			width: 100%;
+			max-width: 250px;
+			margin: clamp(12px, 3vw, 15px) auto;
+			text-align: center;
+			padding: clamp(10px, 2vw, 12px) clamp(20px, 4vw, 24px);
+		}
 	}
 </style>

@@ -24,7 +24,7 @@
 		align-items: center;
 		justify-content: center;
 		text-align: center;
-		padding: 60px 20px;
+		padding: clamp(40px, 8vw, 60px) clamp(16px, 4vw, 20px);
 		color: white;
 	}
 
@@ -45,5 +45,20 @@
 		font-size: clamp(1.2rem, 3vw, 2rem);
 		margin-top: 20px;
 		opacity: 0.95;
+	}
+
+	@media (max-width: 640px) {
+		.hero {
+			min-height: 50vh;
+			padding: clamp(30px, 6vw, 50px) clamp(12px, 3vw, 20px);
+		}
+
+		h1 {
+			font-size: clamp(2rem, 7vw, 4rem);
+		}
+
+		.subtitle {
+			font-size: clamp(0.9rem, 2.5vw, 1.3rem);
+		}
 	}
 </style>

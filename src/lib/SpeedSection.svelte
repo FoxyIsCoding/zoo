@@ -1,9 +1,36 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
+
 	interface Props {
 		speed?: number;
 	}
 	
 	let { speed = 35 }: Props = $props();
+	let useKmh = $state(false);
+
+	const mphToKmh = (mph: number) => Math.round(mph * 1.60934);
+
+	const toggleUnit = () => {
+		useKmh = !useKmh;
+		// Save to cookie
+		document.cookie = `speedUnit=${useKmh ? 'kmh' : 'mph'}; path=/; max-age=31536000`;
+	};
+
+	const convertSpeed = (mph: number) => (useKmh ? mphToKmh(mph) : mph);
+	const unit = $derived(useKmh ? 'KMH' : 'MPH');
+
+	onMount(() => {
+		// Load from cookie
+		const cookies = document.cookie.split(';').reduce((acc, cookie) => {
+			const [key, value] = cookie.trim().split('=');
+			acc[key] = value;
+			return acc;
+		}, {} as Record<string, string>);
+
+		if (cookies.speedUnit === 'kmh') {
+			useKmh = true;
+		}
+	});
 </script>
 
 <section class="mynts-section">
@@ -11,11 +38,11 @@
 		<div class="mynts-icon">🏊</div>
 		<h2>Shark Speed :o</h2>
 		<p class="description">Sharks are some of the fastest swimmers in the ocean!</p>
-		<div class="conversion">
-			<span class="rate">Great White: {speed} MPH</span>
-		</div>
+		<button class="conversion" onclick={toggleUnit}>
+			<span class="rate">Great White: {convertSpeed(speed)} {unit}</span>
+		</button>
 		<h3>How fast can sharks swim?</h3>
-		<p>🦈 Shortfin Mako: 60 mph (fastest!) | 🦈 Great White: 35 mph | 🦈 Tiger Shark: 20 mph</p>
+		<p>🦈 Shortfin Mako: {convertSpeed(60)} {unit.toLowerCase()} (fastest!) | 🦈 Great White: {convertSpeed(35)} {unit.toLowerCase()} | 🦈 Tiger Shark: {convertSpeed(20)} {unit.toLowerCase()}</p>
 	</div>
 </section>
 
@@ -61,6 +88,15 @@
 		border-radius: 50px;
 		display: inline-block;
 		margin: 30px 0;
+		border: 2px solid transparent;
+		cursor: pointer;
+		transition: all 0.2s ease;
+	}
+
+	.conversion:hover {
+		background: rgba(255, 255, 255, 0.7);
+		border-color: #1f2d3d;
+		transform: scale(1.05);
 	}
 
 	.rate {
