@@ -3,9 +3,11 @@
 		currentImage: string;
 		showHungryBubble: boolean;
 		isEating: boolean;
+		onPet: () => void;
+		isPetting: boolean;
 	};
 
-	let { currentImage, showHungryBubble, isEating }: Props = $props();
+	let { currentImage, showHungryBubble, isEating, onPet, isPetting }: Props = $props();
 </script>
 
 <div class="shark-room">
@@ -14,7 +16,16 @@
 			<div class="speech-bubble">I'm hungry &gt;:3</div>
 		{/if}
 
-		<img src={currentImage} alt="Shark pet" class="shark-image" class:eating={isEating} />
+		<!-- svelte-ignore a11y_click_events_have_key_events -->
+		<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
+		<img 
+			src={currentImage} 
+			alt="Shark pet" 
+			class="shark-image" 
+			class:eating={isEating}
+			class:petting={isPetting}
+			onclick={onPet}
+		/>
 	</div>
 </div>
 
@@ -57,10 +68,19 @@
 		transition: transform 0.2s ease;
 		position: relative;
 		z-index: 1;
+		cursor: pointer;
+	}
+
+	.shark-image:hover {
+		transform: scale(1.05);
 	}
 
 	.shark-image.eating {
 		animation: bounce 0.5s ease infinite;
+	}
+
+	.shark-image.petting {
+		animation: wiggle 0.4s ease-in-out;
 	}
 
 	@keyframes bounce {
@@ -70,6 +90,18 @@
 		}
 		50% {
 			transform: translateY(-8px);
+		}
+	}
+
+	@keyframes wiggle {
+		0%, 100% {
+			transform: rotate(0deg);
+		}
+		25% {
+			transform: rotate(-5deg);
+		}
+		75% {
+			transform: rotate(5deg);
 		}
 	}
 

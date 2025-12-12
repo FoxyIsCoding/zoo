@@ -8,21 +8,38 @@
 	import defaultImg from '$lib/../assets/interactive/low quality/1.png?url';
 	import sadImg from '$lib/../assets/interactive/low quality/sad.png?url';
 	import eatingImg from '$lib/../assets/interactive/low quality/vege.png?url';
+	import slepImg from '$lib/../assets/interactive/low quality/slep.png?url';
+	import dreamImg from '$lib/../assets/interactive/low quality/dream.png?url';
+	import sillyImg from '$lib/../assets/interactive/low quality/silly.png?url';
+	import love1Img from '$lib/../assets/interactive/low quality/love1.png?url';
+	import loveImg from '$lib/../assets/interactive/low quality/love.png?url';
 
 	let { data }: PageProps = $props();
 
 	const images = {
 		default: defaultImg,
 		sad: sadImg,
-		eating: eatingImg
+		eating: eatingImg,
+		slep: slepImg,
+		dream: dreamImg,
+		silly: sillyImg,
+		love1: love1Img,
+		love: loveImg
+	};
+
+	// Determine initial image based on time
+	const getInitialImage = () => {
+		const currentHour = new Date().getHours();
+		return currentHour >= 21 ? images.slep : images.default;
 	};
 
 	let health = $state(100);
 	let hunger = $state(0);
-	let currentImage = $state(images.default);
+	let currentImage = $state(getInitialImage());
 	let showHungryBubble = $state(false);
 	let isEating = $state(false);
 	let isDead = $state(false);
+	let isPetting = $state(false);
 
 	const derived_hungerPercent = $derived(hunger);
 	const derived_healthPercent = $derived(health);
@@ -30,6 +47,7 @@
 
 	let hungerInterval: ReturnType<typeof setInterval> | null = null;
 	let eatingTimeout: ReturnType<typeof setTimeout> | null = null;
+	let pettingTimeout: ReturnType<typeof setTimeout> | null = null;
 
 	const startHungerTimer = () => {
 		hungerInterval = setInterval(() => {
@@ -41,7 +59,7 @@
 
 			if (hunger >= 80 && health > 0) {
 				health = Math.max(0, health - 2);
-			}
+			} 
 
 			if (health <= 0) {
 				isDead = true;
@@ -68,26 +86,49 @@
 		health = Math.min(100, health + 20);
 
 		
-		eatingTimeout = setTimeout(() => {
+			eatingTimeout = setTimeout(() => {
 			isEating = false;
-			currentImage = hunger >= 60 ? images.sad : images.default;
+			currentImage = hunger >= 60 ? images.sad : getInitialImage();
 		}, 2500);
 	};
 
-	
+	const petShark = () => {
+		if (isPetting || isEating || isDead) return;
+
+		isPetting = true;
+		showHungryBubble = false;
+
+		// 50% chance for dream.png, 50% chance split between silly, love1, and love
+		const randomValue = Math.random();
+		if (randomValue < 0.5) {
+			currentImage = images.dream;
+		} else {
+			const otherImages = [images.silly, images.love1, images.love];
+			const randomImage = otherImages[Math.floor(Math.random() * otherImages.length)];
+			currentImage = randomImage;
+		}
+
+		// Return to normal state after 2 seconds
+		pettingTimeout = setTimeout(() => {
+			isPetting = false;
+			currentImage = hunger >= 60 ? images.sad : getInitialImage();
+		}, 2000);
+	};	
 	const restartGame = () => {
 		health = 100;
 		hunger = 0;
 		isDead = false;
-		currentImage = images.default;
+		currentImage = getInitialImage();
 		showHungryBubble = false;
 		isEating = false;
+		isPetting = false;
 		startHungerTimer();
 	};
 
 	const stopTimers = () => {
 		if (hungerInterval) clearInterval(hungerInterval);
 		if (eatingTimeout) clearTimeout(eatingTimeout);
+		if (pettingTimeout) clearTimeout(pettingTimeout);
 	};
 
 	onMount(() => {
@@ -107,7 +148,7 @@
 
 	<PetStats health={derived_healthPercent} hunger={derived_hungerPercent} />
 
-	<SharkDisplay {currentImage} {showHungryBubble} {isEating} />
+	<SharkDisplay {currentImage} {showHungryBubble} {isEating} onPet={petShark} {isPetting} />
 
 	<PetControls onFeed={feedShark} {isEating} />
 

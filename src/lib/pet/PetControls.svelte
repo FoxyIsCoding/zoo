@@ -14,10 +14,10 @@
 </div>
 
 <style>
-	.controls {
+	.controls { 
 		display: flex;
 		justify-content: center;
-	}
+	}   
 
 	.feed-button {
 		background: #3182ce;
@@ -43,3 +43,7 @@
 		cursor: not-allowed;
 	}
 </style>
+  
+
+
+
