@@ -47,7 +47,7 @@
 <style>
 	.mynts-section {
 		background: linear-gradient(135deg, #ffd93d 0%, #ffb800 100%);
-		padding: 80px 20px;
+		padding: clamp(48px, 8vw, 80px) clamp(16px, 6vw, 28px);
 		text-align: center;
 		color: #1f2d3d;
 	}
@@ -58,7 +58,7 @@
 	}
 
 	.mynts-icon {
-		font-size: 5rem;
+		font-size: clamp(3rem, 12vw, 5rem);
 		margin-bottom: 20px;
 	}
 
@@ -75,18 +75,19 @@
 	}
 
 	.description {
-		font-size: 1.3rem;
+		font-size: clamp(1rem, 3vw, 1.3rem);
 		line-height: 1.6;
 		margin: 20px 0;
 	}
 
 	.conversion {
 		background: rgba(255, 255, 255, 0.5);
-		padding: 20px 40px;
-		border-radius: 50px;
+		padding: clamp(14px, 4vw, 20px) clamp(24px, 6vw, 40px);
+		border-radius: 999px;
 		display: inline-block;
 		margin: 30px 0;
 		border: 2px solid transparent;
+		width: min(420px, 100%);
 		cursor: pointer;
 		transition: all 0.2s ease;
 	}
@@ -98,13 +99,27 @@
 	}
 
 	.rate {
-		font-size: 1.8rem;
+		font-size: clamp(1.2rem, 4vw, 1.8rem);
 		font-weight: 800;
 		color: #1f2d3d;
 	}
 
 	p {
-		font-size: 1.2rem;
+		font-size: clamp(1rem, 3.2vw, 1.2rem);
 		line-height: 1.7;
+	}
+
+	@media (max-width: 640px) {
+		h3 {
+			margin: 28px 0 16px 0;
+		}
+
+		.conversion {
+			margin: 22px auto;
+		}
+
+		p {
+			line-height: 1.6;
+		}
 	}
 </style>

@@ -27,7 +27,8 @@
 		love: loveImg
 	};
 
-	// Determine initial image based on time
+	
+
 	const getInitialImage = () => {
 		const currentHour = new Date().getHours();
 		return currentHour >= 21 ? images.slep : images.default;
@@ -98,7 +99,6 @@
 		isPetting = true;
 		showHungryBubble = false;
 
-		// 50% chance for dream.png, 50% chance split between silly, love1, and love
 		const randomValue = Math.random();
 		if (randomValue < 0.5) {
 			currentImage = images.dream;
@@ -108,7 +108,6 @@
 			currentImage = randomImage;
 		}
 
-		// Return to normal state after 2 seconds
 		pettingTimeout = setTimeout(() => {
 			isPetting = false;
 			currentImage = hunger >= 60 ? images.sad : getInitialImage();

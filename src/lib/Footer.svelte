@@ -1,7 +1,6 @@
 <footer class="zoo-footer">
 	<div class="footer-content">
 		<div class="footer-brand">
-			<span class="footer-icon">🦈</span>
 			<p class="footer-text">shorks :3</p>
 		</div>
 		<div class="footer-links">
@@ -27,12 +26,6 @@
 
 	.footer-brand {
 		margin-bottom: clamp(15px, 4vw, 25px);
-	}
-
-	.footer-icon {
-		font-size: 48px;
-		margin-bottom: 10px;
-		display: block;
 	}
 
 	.footer-text {

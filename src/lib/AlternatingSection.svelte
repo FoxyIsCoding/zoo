@@ -16,7 +16,7 @@
 	<div class="container">
 		{#if imageSrc}
 			<div class="image-column">
-				<img src={imageSrc} alt={imageAlt} style="border-radius: 1dvi;"/>
+				<img src={imageSrc} alt={imageAlt} />
 			</div>
 		{/if}
 		<div class="content-column">
@@ -57,6 +57,7 @@
 		height: auto;
 		margin: 0 auto;
 		display: block;
+		border-radius: clamp(14px, 2vw, 20px);
 	}
 
 	.content-column {
@@ -106,6 +107,7 @@
 	@media (max-width: 640px) {
 		.image-column img {
 			max-width: 100%;
+			border-radius: clamp(22px, 6vw, 32px);
 		}
 	}
 </style>

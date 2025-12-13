@@ -1,10 +1,19 @@
 <script lang="ts">
+import { onMount } from 'svelte';
 	import HeroSection from '$lib/HeroSection.svelte';
 	import AlternatingSection from '$lib/AlternatingSection.svelte';
 	import MyntsSection from '$lib/SpeedSection.svelte';
 	import FAQItem from '$lib/FAQItem.svelte';
 	import Footer from '$lib/Footer.svelte';
 	import FactsPanel from '$lib/FactsPanel.svelte';	
+
+onMount(() => {
+	console.groupCollapsed('%c shorks :3 ', 'color: black; background: #EFDECD; padding: 4px; font-size: 12px; font-weight: bold;');
+	console.log('%c zoo.foxyk.xyz ', 'color: black; background: #EFDECD; padding: 4px; font-size: 12px;');
+	console.log('%c Built By: Foxyk.xyz ', 'color: black; background: #EFDECD; padding: 4px; font-size: 12px;');
+	console.log('%c For: HackClub Zoo YSWS', 'color: black; background: #EFDECD; padding: 4px; font-size: 12px;');
+	console.groupEnd();
+});
 </script>
 
 <HeroSection title="shorks :3" subtitle="that silly cute things that swin in oceans" />
@@ -201,3 +210,4 @@
 		}
 	}
 </style>
+
