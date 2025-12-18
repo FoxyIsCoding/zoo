@@ -1,58 +1,24 @@
-# Svelte library
+<div align="center">
+<img src="static/logo.png" alt="Shorks logo" width="420" />
 
-Everything you need to build a Svelte library, powered by [`sv`](https://npmjs.com/package/sv).
+This project was made for the ZOO YSWS project by Hack Club.
+</div>
+---
+This site shows fun facts about sharks.. It also has a game where you can feed a shark fish! It has all that the event requires and more!
 
-Read more about creating a library [in the docs](https://svelte.dev/docs/kit/packaging).
 
-## Creating a project
+### Features:
+ - fun facts about sharks
+ - interactive game :3
+ - responsive design
 
-If you're seeing this, you've probably already done this step. Congrats!
+Its made using SvelteKit and Tailwind CSS.
 
-```sh
-# create a new project in the current directory
-npx sv create
+The interactive section has a few hidden features..
+You can pet the shark by clicking and dragging on it.. this will change the image to a cute petting shark! Next one is that you can ofc feed him to make him less hungry. 
+If hunger is over 80%, his health will start to decrease over time!
+Another one is that if you open it after 9pm your time, the shark will have a cute blanket on it and look sleepy :3
 
-# create a new project in my-app
-npx sv create my-app
-```
+Check out the live site [here](https://zoo.foxyk.xyz)!
 
-## Developing
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```sh
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-Everything inside `src/lib` is part of your library, everything inside `src/routes` can be used as a showcase or preview app.
-
-## Building
-
-To build your library:
-
-```sh
-npm pack
-```
-
-To create a production version of your showcase app:
-
-```sh
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
-
-## Publishing
-
-Go into the `package.json` and give your package the desired name through the `"name"` option. Also consider adding a `"license"` field and point it to a `LICENSE` file which you can create from a template (one popular option is the [MIT license](https://opensource.org/license/mit/)).
-
-To publish your library to [npm](https://www.npmjs.com):
-
-```sh
-npm publish
-```
