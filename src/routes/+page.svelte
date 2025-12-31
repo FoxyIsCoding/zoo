@@ -45,6 +45,7 @@ onMount(() => {
 	<a href="https://saveourseas.com/" class="cta-button secondary">Save shorks :3</a>
 </AlternatingSection>
 
+<div id="learn">
 <AlternatingSection 
 	title="HAMMERHEAD SHARKS" 
 	imageSrc="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400"
@@ -55,7 +56,9 @@ onMount(() => {
 	<p>These unique sharks use their wide heads to pin stingrays to the ocean floor. They're one of the few shark species that swim in schools :3</p>
 	<a href="#learn" class="cta-button">Discover More</a>
 </AlternatingSection>
+</div>
 <FactsPanel />
+<section id="species">
 <AlternatingSection 
 	title="TIGER SHARKS" 
 	imageSrc="https://upload.wikimedia.org/wikipedia/commons/3/39/Tiger_shark.jpg"
@@ -65,10 +68,11 @@ onMount(() => {
 >
 	<p>The "garbage cans of the sea"!</p>
 	<p>Tiger sharks will eat almost anything - they've been found with license plates and tires in their stomachs! Named for the dark stripes on their bodies, they can grow up to 16 feet long.</p>
-	<a href="#species" class="cta-button secondary">More Species</a>
+	<a href="/species" class="cta-button secondary">More Species</a>
 </AlternatingSection>
+</section>
 
-<section class="faq-section">
+<section class="faq-section" id="facts">
 	<div class="faq-container">
 		<div class="faq-header">
 			<div class="faq-emoji">🦈</div>
@@ -116,6 +120,10 @@ onMount(() => {
 <Footer />
 
 <style>
+	:global(html) {
+		scroll-behavior: smooth;
+	}
+
 	:global(body) {
 		margin: 0;
 		font-family: 'Phantom Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;

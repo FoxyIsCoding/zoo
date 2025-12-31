@@ -5,8 +5,8 @@
 		</div>
 		<div class="footer-links">
 			<a href="https://saveourseas.com" target="_blank" rel="noopener noreferrer">save poor sharks :c</a>
-			<a href="#facts">some facts</a>
-			<a href="#species">species guide</a>
+			<a href="/#facts">some facts</a>
+			<a href="/species">species guide</a>
 		</div>
 	</div>
 </footer>
