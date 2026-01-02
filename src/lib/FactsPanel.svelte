@@ -66,6 +66,16 @@
 		startCycle();
 	};
 
+	const prev = () => {
+		setActive(active - 1);
+		startCycle();
+	};
+
+	const next = () => {
+		setActive(active + 1);
+		startCycle();
+	};
+
 	const step = (now: number) => {
 		if (completed || !isVisible) {
 			progress = completed ? 1 : progress;
@@ -156,17 +166,29 @@
 				<button class="btn ghost" type="button" onclick={replay}>replay facts</button>
 			</div>
 		{:else}
-			<div class="indicators" aria-label="Shark facts selector">
-				{#each facts as _, i}
-					<button
-						type="button"
-						class={`dot ${i === active ? 'active' : ''}`}
-						style={`--p:${i === active ? progress : 0};`}
-						onclick={() => goTo(i)}
-						aria-pressed={i === active}
-						aria-label={`Show fact ${i + 1}`}
-					></button>
-				{/each}
+			<div class="navigation">
+				<button type="button" class="arrow" onclick={prev} aria-label="Previous fact">
+					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<polyline points="15 18 9 12 15 6"></polyline>
+					</svg>
+				</button>
+				<div class="indicators" aria-label="Shark facts selector">
+					{#each facts as _, i}
+						<button
+							type="button"
+							class={`dot ${i === active ? 'active' : ''}`}
+							style={`--p:${i === active ? progress : 0};`}
+							onclick={() => goTo(i)}
+							aria-pressed={i === active}
+							aria-label={`Show fact ${i + 1}`}
+						></button>
+					{/each}
+				</div>
+				<button type="button" class="arrow" onclick={next} aria-label="Next fact">
+					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<polyline points="9 18 15 12 9 6"></polyline>
+					</svg>
+				</button>
 			</div>
 		{/if}
 	</div>
@@ -199,6 +221,37 @@
 		margin: 0 0 14px 0;
 		font-size: clamp(2rem, 4vw, 2.6rem);
 		font-weight: 800;
+	}
+
+	.navigation {
+		display: flex;
+		gap: 20px;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.arrow {
+		width: 40px;
+		height: 40px;
+		border-radius: 50%;
+		border: 1px solid #1b263b;
+		background: transparent;
+		color: #1b263b;
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		transition: transform 150ms ease, background 150ms ease, color 150ms ease;
+	}
+
+	.arrow:hover {
+		transform: scale(1.05);
+		background: #1b263b;
+		color: #e7f2ff;
+	}
+
+	.arrow:active {
+		transform: scale(0.98);
 	}
 
 	.body {
